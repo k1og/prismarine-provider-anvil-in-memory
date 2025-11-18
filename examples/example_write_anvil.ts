@@ -17,8 +17,6 @@ async function generateWorld(): Promise<void> {
 
   const BEDROCK = mcData.blocksByName["bedrock"]?.id;
   const DIRT = mcData.blocksByName["dirt"]?.id;
-  const WHITE_WOOL = mcData.blocksByName["white_wool"]?.id;
-  const GRASS_BLOCK_DEFAULT_STATE = 9;
   const PLAINS_BIOME = 39;
 
   if (!BEDROCK || !DIRT) {
@@ -35,7 +33,7 @@ async function generateWorld(): Promise<void> {
 
         chunk.setBlockType(Vec3(bx, 0 - 64, bz), BEDROCK);
         chunk.setBlockType(Vec3(bx, 1 - 64, bz), DIRT);
-        chunk.setBlockType(Vec3(bx, 2 - 64, bz), WHITE_WOOL);
+        chunk.setBlockType(Vec3(bx, 2 - 64, bz), DIRT);
       }
     }
 
