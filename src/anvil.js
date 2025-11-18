@@ -3,14 +3,13 @@ module.exports = (mcVersion) => {
   const { nbtChunkToPrismarineChunk, prismarineChunkToNbt } = require('./chunk')(mcVersion)
 
   class Anvil {
-    constructor (path) {
+    constructor () {
       this.regions = {}
-      this.path = path
     }
 
     regionFileName (x, z) {
       const region = { x: x >> 5, z: z >> 5 }
-      return this.path + '/r.' + region.x + '.' + region.z + '.mca'
+      return 'r.' + region.x + '.' + region.z + '.mca'
     }
 
     async getRegion (x, z) {
@@ -67,6 +66,10 @@ module.exports = (mcVersion) => {
 
     async close () {
       return Promise.all(Object.keys(this.regions).map(name => this.regions[name].file.close()))
+    }
+
+    getAllRegions() {
+      return Object.values(this.regions)
     }
   }
 
