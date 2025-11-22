@@ -13,7 +13,6 @@ async function generateWorld(): Promise<void> {
   const Anvil = prismarineProviderInMemory.Anvil(mcVersion);
 
   const anvil = new Anvil();
-  const chunk = new Chunk(null);
 
   const BEDROCK = mcData.blocksByName["bedrock"]?.id;
   const DIRT = mcData.blocksByName["dirt"]?.id;
@@ -24,6 +23,7 @@ async function generateWorld(): Promise<void> {
   }
 
   async function createSuperflatChunk(x: number, z: number): Promise<void> {
+    const chunk = new Chunk(null);
     for (let bx = 0; bx < 16; bx++) {
       for (let bz = 0; bz < 16; bz++) {
         chunk.setBiome(
